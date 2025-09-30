@@ -1,23 +1,22 @@
-import RPi.GPIO as IO
 import time
-import math
+import signal_generator as sig
+import r2r_class as r2r
 
-def d2b(n):
-    return [int(element) for element in bin(n)[2:].zfill(8)]
+amplitude = 0.5
+sig_freq = 20
+sampl_freq = 1000
 
 
-DAC=[8,11,7,1,0,5,12,6]
-period=0.00005
+try:
+    dc = r2r.R2R_DAC([16,20,21,25,26,17,27,22], 3.2*255/256, True)
 
-IO.setmode(IO.BCM)
-IO.setup(DAC, IO.OUT)
-IO.output(DAC, 0)
-x=0
-while True:
-    x+=0.01
-    y=(math.sin(x)+1)/2
-    V=int(y*255)
-    state=d2b(V)
-    for i in DAC:
-        IO.output(i, state[DAC.index(i)])
-    time.sleep(period)
+    while True:
+        try:
+
+            fx=sig.get_sin_wave_amplitude(sig_freq, time.time())
+            dc.set_voltage(fx*amplitude)
+        except ValueError:
+                print("Не число!\n") 
+
+finally:
+    dc.deinit()
