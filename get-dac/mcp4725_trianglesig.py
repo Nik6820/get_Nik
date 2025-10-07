@@ -3,7 +3,7 @@ import mcp4725_driver as mcp
 import signal_generator as sig
 
 amplitude = 4
-sig_freq = 5
+sig_freq = 10
 sampl_freq = 1000
 
 try:

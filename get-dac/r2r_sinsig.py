@@ -4,11 +4,11 @@ import r2r_class as r2r
 
 amplitude = 3
 sig_freq = 20
-sampl_freq = 1000
+sampl_freq = 200
 
 
 try:
-    dc = r2r.R2R_DAC([16,20,21,25,26,17,27,22], 3.2*255/256, True)
+    dc = r2r.R2R_DAC([16,20,21,25,26,17,27,22], 3.2, True)
 
     while True:
         try:
