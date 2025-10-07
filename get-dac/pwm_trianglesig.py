@@ -1,14 +1,13 @@
 import time
+import pwm_dac as pwm
 import signal_generator as sig
-import r2r_class as r2r
 
 amplitude = 3
-sig_freq = 20
+sig_freq = 10
 sampl_freq = 1000
 
-
 try:
-    dc = r2r.R2R_DAC([16,20,21,25,26,17,27,22], 3.2*255/256, True)
+    dc = pwm.PWM_DAC(12, 500, 3.290, True)
 
     while True:
         try:

@@ -2,7 +2,7 @@ import time
 import signal_generator as sig
 import r2r_class as r2r
 
-amplitude = 0.5
+amplitude = 3
 sig_freq = 20
 sampl_freq = 1000
 
@@ -15,6 +15,7 @@ try:
 
             fx=sig.get_sin_wave_amplitude(sig_freq, time.time())
             dc.set_voltage(fx*amplitude)
+            sig.wait_for_sampling_period(sampl_freq)
         except ValueError:
                 print("Не число!\n") 
 
