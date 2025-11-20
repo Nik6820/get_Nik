@@ -2,6 +2,7 @@ import lightFunctions as lf
 photo=["mercury_1_white", "mercury_1_yellow", "mercury_1_red", "mercury_1_green", "mercury_1_blue",
        "mercury_2_white", "mercury_2_yellow", "mercury_2_red", "mercury_2_green", "mercury_2_blue",
        "warm_white", "warm_yellow", "warm_red", "warm_green", "warm_blue"]
+luma_warm=[]
 for ph in  photo:
     lamp=ph[:ph.index("_")]
     num=""
@@ -14,3 +15,6 @@ for ph in  photo:
         data = lf.readIntensity("photo/"+ ph+".jpg", "spectrum_"+lamp+"_"+num+"_"+color+".jpg", lamp, color)
     else:
         data = lf.readIntensity("photo/"+ ph+".jpg", "spectrum_"+lamp+"_"+color+".jpg", lamp, color)
+        luma_warm.append(data)
+lf.GrafAlbedo(luma_warm, "ALBEDO.jpg")
+lf.GrafIntens(luma_warm, "INTENSE.jpg")
