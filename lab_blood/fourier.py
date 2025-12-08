@@ -5,7 +5,7 @@ from scipy.fft import fft, fftfreq
 from scipy.signal import find_peaks
 
 # Read the CSV file
-file_path = "kar_f.csv"
+file_path = "and_f.csv"
 df = pd.read_csv(file_path, delimiter=',')
 
 # Extract time and voltage data
